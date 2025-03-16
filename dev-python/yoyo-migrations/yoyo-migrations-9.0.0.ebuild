@@ -18,6 +18,7 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 RDEPEND="
 	dev-python/sqlparse[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
+	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 "
 BDEPEND="
 "
