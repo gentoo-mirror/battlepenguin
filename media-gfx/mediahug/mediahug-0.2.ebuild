@@ -4,10 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
-# TODO?
-#inherit bash-completion-r1 distutils-r1 optfeature wrapper
-inherit distutils-r1
+PYTHON_COMPAT=( pypy3 python3_{12..13} )
+inherit distutils-r1 desktop xdg-utils
 
 DESCRIPTION="Media Browser"
 HOMEPAGE="https://gitlib.com/djsumdog/mediahug"
@@ -24,15 +22,20 @@ RDEPEND="
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/yoyo-migrations[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	"
 distutils_enable_tests pytest
 
-python_test() {
-	epytest
+src_install() {
+	distutils-r1_src_install
+	doicon -s 128 mediahug/mediahug-128x128.png
+	domenu "assets/${PN}.desktop"
 }
 
-#python_install_all() {
-#}
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
