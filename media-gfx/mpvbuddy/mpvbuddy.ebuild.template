@@ -27,7 +27,7 @@ distutils_enable_tests pytest
 
 src_install() {
   distutils-r1_src_install
-  doicon -s 128 mpvbuddy/mpvbuddy-icon.png
+  doicon -s 128 mpvbuddy/mpvbuddy-128x128.png
   domenu "assets/${PN}.desktop"
 }
 
