@@ -19,6 +19,8 @@ RDEPEND="
   dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
   dev-python/python-mpv[${PYTHON_USEDEP}]
   dev-python/yoyo-migrations[${PYTHON_USEDEP}]
+  dev-python/rich[${PYTHON_USEDEP}]
+  dev-python/click[${PYTHON_USEDEP}]
 "
 BDEPEND="
   dev-python/hatch-vcs[${PYTHON_USEDEP}]
