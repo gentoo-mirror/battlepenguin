@@ -5,7 +5,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13} )
 
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
+
 
 DESCRIPTION="Yoyo Migration: Python database migration tool"
 HOMEPAGE="https://ollycope.com/software/yoyo/latest/"
