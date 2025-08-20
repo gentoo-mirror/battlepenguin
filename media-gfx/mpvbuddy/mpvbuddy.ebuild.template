@@ -21,6 +21,7 @@ RDEPEND="
   dev-python/yoyo-migrations[${PYTHON_USEDEP}]
   dev-python/rich[${PYTHON_USEDEP}]
   dev-python/click[${PYTHON_USEDEP}]
+  dev-python/python-xlib[${PYTHON_USEDEP}]
 "
 BDEPEND="
   dev-python/hatch-vcs[${PYTHON_USEDEP}]
