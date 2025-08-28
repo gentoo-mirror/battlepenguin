@@ -1,0 +1,43 @@
+# Copyright 2025 BattlePenguin.com
+# Distributed under the terms of the GNU General Public License v3
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=hatchling
+PYTHON_COMPAT=( pypy3 python3_{12..13} )
+inherit distutils-r1 desktop xdg-utils
+
+DESCRIPTION="Media Browser"
+HOMEPAGE="https://gitlib.com/djsumdog/mediahug"
+SRC_URI="https://nexus.sumit.im/repository/bp-python/packages/mediahug/0.6/mediahug-0.6.tar.gz"
+
+LICENSE="AGPL-3"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
+
+RDEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
+	media-libs/opencv[${PYTHON_USEDEP},python]
+	dev-python/pyside[gui,widgets,opengl,${PYTHON_USEDEP}]
+	dev-python/python-mpv[${PYTHON_USEDEP}]
+	dev-python/rich[${PYTHON_USEDEP}]
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/yoyo-migrations[${PYTHON_USEDEP}]
+	dev-python/pyopengl[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
+	"
+distutils_enable_tests pytest
+
+src_install() {
+	distutils-r1_src_install
+	doicon -s 128 mediahug/mediahug-128x128.png
+	domenu "assets/${PN}.desktop"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+S="${WORKDIR}/mediahug-0.6"
