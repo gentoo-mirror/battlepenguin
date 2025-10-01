@@ -29,8 +29,8 @@ distutils_enable_tests pytest
 
 src_install() {
   distutils-r1_src_install
-#  doicon -s 128 arcstreamsium/arcstreamsium-128x128.png
-#  domenu "assets/${PN}.desktop"
+  doicon -s 128 arcstreamsium/arcstreamsium-128x128.png
+  domenu "assets/${PN}.desktop"
 }
 
 pkg_postinst() {
