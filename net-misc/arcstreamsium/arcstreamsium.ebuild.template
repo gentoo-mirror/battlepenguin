@@ -22,6 +22,7 @@ RDEPEND="
   dev-python/rich[${PYTHON_USEDEP}]
   dev-python/click[${PYTHON_USEDEP}]
   net-misc/yt-dlp[${PYTHON_USEDEP}]
+  dev-python/pyxdg[${PYTHON_USEDEP}]
 "
 BDEPEND="
   dev-python/hatch-vcs[${PYTHON_USEDEP}]
