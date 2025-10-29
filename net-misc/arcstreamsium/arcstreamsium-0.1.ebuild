@@ -1,0 +1,42 @@
+# Copyright 2025 BattlePenguin.com
+# Distributed under the terms of the GNU General Public License v3
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=hatchling
+PYTHON_COMPAT=( pypy3 python3_{12..13} )
+inherit distutils-r1 desktop xdg-utils
+
+DESCRIPTION="Frontend for yt-dlp with clipboard monitoring and stream archival"
+HOMEPAGE="https://gitlib.com/djsumdog/arcstreamsium"
+SRC_URI="https://nexus.sumit.im/repository/bp-python/packages/arcstreamsium/0.1/arcstreamsium-0.1.tar.gz"
+
+LICENSE="AGPL-3"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
+
+RDEPEND="
+  dev-python/pyside[gui,widgets,opengl,${PYTHON_USEDEP}]
+  dev-python/psutil[${PYTHON_USEDEP}]
+  dev-python/pyclip[${PYTHON_USEDEP}]
+  dev-python/rich[${PYTHON_USEDEP}]
+  dev-python/click[${PYTHON_USEDEP}]
+  net-misc/yt-dlp[${PYTHON_USEDEP}]
+  dev-python/pyxdg[${PYTHON_USEDEP}]
+"
+BDEPEND="
+  dev-python/hatch-vcs[${PYTHON_USEDEP}]
+  "
+distutils_enable_tests pytest
+
+src_install() {
+  distutils-r1_src_install
+  doicon -s 128 arcstreamsium/arcstreamsium-128x128.png
+  domenu "assets/${PN}.desktop"
+}
+
+pkg_postinst() {
+  xdg_desktop_database_update
+  xdg_icon_cache_update
+}
+S="${WORKDIR}/arcstreamsium-0.1"
